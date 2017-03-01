@@ -1,0 +1,26 @@
+{
+  "name": "eslint-plugin-deprecate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMost/eslint-plugin-deprecate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexMost/eslint-plugin-deprecate/issues"
+  },
+  "homepage": "https://github.com/AlexMost/eslint-plugin-deprecate#readme",
+  "peerDependencies": {
+    "eslint": "^3.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.16.1",
+    "mocha": "3.2.0"
+  }
+}
