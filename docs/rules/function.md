@@ -31,7 +31,7 @@ legacyFunc();
 You can just pass deprecated function names as strings:
 
 ```js
-"deprecate/function": [ 2, "<fn name1>", "<fn name2>"];
+"deprecate/function": [ 2, "<fn name1>", "<fn name2>"]
 ```
 
 If you want more control over displayed errors (suggest alternative function e.t.c)
@@ -39,7 +39,7 @@ you can pass objects instead of just function names:
 
 ```js
 "deprecate/function": [ 2, 
-    {"name": "<fn name>", "use": "<suggested alternative>"}, ... ];
+    {"name": "<fn name>", "use": "<suggested alternative>"}, ... ]
 ```
 
 ## When Not To Use It
