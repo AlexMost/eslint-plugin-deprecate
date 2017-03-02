@@ -9,6 +9,11 @@ ruleTester.run('import', rule, {
             code: 'import a from "Module"',
             parser: "babel-eslint",
             options: [ 'Legacy' ],
+        },
+        {
+            code: 'const a = require("Module")',
+            parser: "babel-eslint",
+            options: [ 'Legacy' ],
         }
     ],
     invalid: [
@@ -27,6 +32,20 @@ ruleTester.run('import', rule, {
             errors: [ {
                 message: 'Module Legacy is deprecated. Use New instead'
             } ]
-        }
+        },
+        {
+            code: 'var a = require("Legacy")',
+            options: [ 'Legacy' ],
+            errors: [ {
+                message: 'Module Legacy is deprecated.'
+            } ]
+        },
+        {
+            code: 'var a = require("Legacy")',
+            options: [ {name: 'Legacy', use: 'New' }],
+            errors: [ {
+                message: 'Module Legacy is deprecated. Use New instead'
+            } ]
+        },
     ]
 } );
