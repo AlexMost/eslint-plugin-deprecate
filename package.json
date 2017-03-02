@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/AlexMost/eslint-plugin-deprecate#readme",
   "peerDependencies": {
-    "eslint": "^3.16.1"
+    "eslint": "^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
     "eslint": "^3.16.1",
