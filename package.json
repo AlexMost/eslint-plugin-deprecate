@@ -1,11 +1,12 @@
 {
   "name": "eslint-plugin-deprecate",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests --recursive"
   },
+  "keywords": ["eslint", "deprecation", "deprecate function"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexMost/eslint-plugin-deprecate.git"
