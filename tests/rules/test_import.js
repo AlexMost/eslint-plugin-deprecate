@@ -5,6 +5,8 @@ const ruleTester = new RuleTester();
 
 ruleTester.run('import', rule, {
     valid: [
+        'require()',
+        'require(fn())',
         {
             code: 'import a from "Module"',
             parser: "babel-eslint",
