@@ -45,3 +45,4 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * [deprecate/function](docs/rules/function.md): Warn about some function usage.
+* [deprecate/import](docs/rules/import.md): Warn about some import/require usage.
