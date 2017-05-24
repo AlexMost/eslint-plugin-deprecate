@@ -6,8 +6,8 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register --recursive tests/rules/test_member_expression.js",
     "build": "babel lib --out-dir dist",
-    "lint": "eslint src tests",
-    "fix": "eslint --fix src tests",
+    "lint": "eslint lib tests",
+    "fix": "eslint --fix lib tests",
     "preversion": "npm run lint && npm run test",
     "prepublish": "npm run build"
   },
