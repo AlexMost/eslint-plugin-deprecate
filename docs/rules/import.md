@@ -21,7 +21,6 @@ Let's consider we have this configuration in `.eslintrc`:
 ### The following patterns are considered as errors:
 
 ```js
-// any function call with name legacyFunc
 import a from 'legacyModule';
 const a = require('legacyModule');
 ```
