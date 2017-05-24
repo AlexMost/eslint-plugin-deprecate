@@ -45,4 +45,5 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * [deprecate/function](docs/rules/function.md): Warn about some function usage.
+* [deprecate/member-expression](docs/rules/member-expression.md): Warn about some member expression usages.
 * [deprecate/import](docs/rules/import.md): Warn about some import/require usage.
