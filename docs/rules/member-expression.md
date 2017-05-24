@@ -52,4 +52,4 @@ you can pass objects instead of just modules names:
 
 ## When Not To Use It
 
-When you don't want to forbid some modules usage in your codebase.
+When you don't want to forbid some member expressions in your code.
