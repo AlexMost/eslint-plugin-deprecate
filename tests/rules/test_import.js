@@ -1,5 +1,5 @@
-const rule = require( '../../lib/rules/import' );
-const RuleTester = require( 'eslint' ).RuleTester;
+const rule = require('../../lib/rules/import');
+const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester();
 
@@ -9,45 +9,45 @@ ruleTester.run('import', rule, {
         'require(fn())',
         {
             code: 'import a from "Module"',
-            parser: "babel-eslint",
-            options: [ 'Legacy' ],
+            parser: 'babel-eslint',
+            options: ['Legacy'],
         },
         {
             code: 'const a = require("Module")',
-            parser: "babel-eslint",
-            options: [ 'Legacy' ],
+            parser: 'babel-eslint',
+            options: ['Legacy'],
         }
     ],
     invalid: [
         {
             code: 'import a from "Legacy"',
-            parser: "babel-eslint",
-            options: [ 'Legacy' ],
-            errors: [ {
+            parser: 'babel-eslint',
+            options: ['Legacy'],
+            errors: [{
                 message: 'Module Legacy is deprecated.'
-            } ]
+            }]
         },
         {
             code: 'import a from "Legacy"',
-            parser: "babel-eslint",
-            options: [ {name: 'Legacy', use: 'New' }],
-            errors: [ {
+            parser: 'babel-eslint',
+            options: [{ name: 'Legacy', use: 'New' }],
+            errors: [{
                 message: 'Module Legacy is deprecated. Use New instead'
-            } ]
+            }]
         },
         {
             code: 'var a = require("Legacy")',
-            options: [ 'Legacy' ],
-            errors: [ {
+            options: ['Legacy'],
+            errors: [{
                 message: 'Module Legacy is deprecated.'
-            } ]
+            }]
         },
         {
             code: 'var a = require("Legacy")',
-            options: [ {name: 'Legacy', use: 'New' }],
-            errors: [ {
+            options: [{ name: 'Legacy', use: 'New' }],
+            errors: [{
                 message: 'Module Legacy is deprecated. Use New instead'
-            } ]
+            }]
         },
     ]
-} );
+});

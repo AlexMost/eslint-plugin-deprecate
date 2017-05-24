@@ -1,5 +1,5 @@
-const rule = require( '../../lib/rules/function' );
-const RuleTester = require( 'eslint' ).RuleTester;
+const rule = require('../../lib/rules/function');
+const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester();
 
@@ -18,25 +18,25 @@ ruleTester.run('function', rule, {
     invalid: [
         {
             code: 'var a = f1();',
-            options: [ 'f1' ],
-            errors: [ {
+            options: ['f1'],
+            errors: [{
                 message: 'Function f1 is deprecated.'
-            } ]
+            }]
         },
         {
             code: 'var a = f1(); f2();',
-            options: [ 'f1', 'f2' ],
+            options: ['f1', 'f2'],
             errors: [
-                { message: 'Function f1 is deprecated.'},
-                { message: 'Function f2 is deprecated.'}
+                { message: 'Function f1 is deprecated.' },
+                { message: 'Function f2 is deprecated.' }
             ]
         },
         {
             code: 'var a = f1(); f2();',
-            options: [ { name: 'f1', use: 'f2' } ],
+            options: [{ name: 'f1', use: 'f2' }],
             errors: [
-                { message: 'Function f1 is deprecated. Use f2 instead'},
+                { message: 'Function f1 is deprecated. Use f2 instead' },
             ]
         }
     ]
-} );
+});
