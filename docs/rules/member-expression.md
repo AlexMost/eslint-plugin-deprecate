@@ -23,9 +23,9 @@ Let's consider we have this configuration in `.eslintrc`:
 ### The following patterns are considered as errors:
 
 ```js
-// any function call with name legacyFunc
 import React from 'react';
 
+// React.createClass is deprecated
 var Component = React.createClass({
   mixins: [MixinA],
   render() {
