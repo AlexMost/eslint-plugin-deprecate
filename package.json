@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register --recursive tests",
+    "test": "mocha --compilers js:babel-register --recursive tests/rules/test_member_expression.js",
     "build": "babel lib --out-dir dist",
     "prepublish": "npm run build"
   },
