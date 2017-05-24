@@ -13,7 +13,7 @@ Let's consider we have this configuration in `.eslintrc`:
 {
   "plugins": ["deprecate"],
   "rules": {
-    "deprecate/import": ["error",
+    "deprecate/member-expression": ["error",
       {"name": "React.createClass", "use": "native es6 classes"}
     ]
   }
