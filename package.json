@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register --recursive tests/rules/test_member_expression.js",
+    "test": "mocha --compilers js:babel-register --recursive tests/**/*.js",
     "build": "babel lib --out-dir dist",
     "lint": "eslint lib tests",
     "fix": "eslint --fix lib tests",
