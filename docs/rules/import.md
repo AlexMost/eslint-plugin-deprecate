@@ -3,6 +3,7 @@
 ## Rule Details
 
 This rule allows you to forbid some module import and to suggest some alternative.
+You must supply the path to the file from the root. This prevents errors caused by having multiple files with the same name in different directories.
 
 ### Example:
 Let's consider we have this configuration in `.eslintrc`:
@@ -12,7 +13,7 @@ Let's consider we have this configuration in `.eslintrc`:
   "plugins": ["deprecate"],
   "rules": {
     "deprecate/import": ["error",
-      {"name": "legacyModule", "use": "newModule"}
+      {"name": "path/to/legacyModule", "use": "newModule"}
     ]
   }
 }
@@ -21,7 +22,11 @@ Let's consider we have this configuration in `.eslintrc`:
 ### The following patterns are considered as errors:
 
 ```js
-import a from 'legacyModule';
+import a from 'path/to/legacyModule'
+import a from '../../path/to/legacyModule'
+import a from 'legacyModule'
+const a = require('path/to/legacyModule');
+const a = require('../../path/to/legacyModule');
 const a = require('legacyModule');
 ```
 
