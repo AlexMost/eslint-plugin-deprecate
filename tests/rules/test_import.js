@@ -40,6 +40,14 @@ ruleTester.run('import', rule, {
     ],
     invalid: [
         {
+            code: 'import a from "root/deprecated/path/to/legacy"',
+            parser: 'babel-eslint',
+            options: ['root/deprecated'],
+            errors: [{
+                message: 'Module root/deprecated is deprecated.'
+            }]
+        },
+        {
             code: 'import a from "Legacy"',
             parser: 'babel-eslint',
             options: ['Legacy'],
@@ -76,6 +84,6 @@ ruleTester.run('import', rule, {
             errors: [{
                 message: 'Module Legacy is deprecated. Use New instead.'
             }]
-        }
+        },
     ]
 });
