@@ -43,49 +43,39 @@ ruleTester.run('import', rule, {
             code: 'import a from "Legacy"',
             parser: 'babel-eslint',
             options: ['Legacy'],
-            errors: [
-                {
-                    message: 'Module Legacy is deprecated.'
-                }
-            ]
+            errors: [{
+                message: 'Module Legacy is deprecated.'
+            }]
         },
         {
             code: 'import a from "Legacy"',
             parser: 'babel-eslint',
             options: [{ name: 'Legacy', use: 'New' }],
-            errors: [
-                {
-                    message: 'Module Legacy is deprecated. Use New instead.'
-                }
-            ]
+            errors: [{
+                message: 'Module Legacy is deprecated. Use New instead.'
+            }]
         },
         {
             code: 'import a from "path/to/Legacy"',
             parser: 'babel-eslint',
             options: [{ name: 'path/to/Legacy', use: 'New' }],
-            errors: [
-                {
-                    message: 'Module path/to/Legacy is deprecated. Use New instead.'
-                }
-            ]
+            errors: [{
+                message: 'Module path/to/Legacy is deprecated. Use New instead.'
+            }]
         },
         {
             code: 'var a = require("Legacy")',
             options: ['Legacy'],
-            errors: [
-                {
-                    message: 'Module Legacy is deprecated.'
-                }
-            ]
+            errors: [{
+                message: 'Module Legacy is deprecated.'
+            }]
         },
         {
             code: 'var a = require("Legacy")',
             options: [{ name: 'Legacy', use: 'New' }],
-            errors: [
-                {
-                    message: 'Module Legacy is deprecated. Use New instead.'
-                }
-            ]
+            errors: [{
+                message: 'Module Legacy is deprecated. Use New instead.'
+            }]
         }
     ]
 });
