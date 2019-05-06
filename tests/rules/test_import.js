@@ -21,9 +21,32 @@ ruleTester.run('import', rule, {
             code: 'const a = require("Module")',
             parser: 'babel-eslint',
             options: ['path/to/Legacy'],
+        },
+        {
+            code: 'import a from "../../Legacy"',
+            parser: 'babel-eslint',
+            options: [{ name: 'path/to/Legacy', use: 'New' }],
+        },
+        {
+            code: 'import a from "Legacy"',
+            parser: 'babel-eslint',
+            options: [{ name: 'path/to/Legacy', use: 'New' }],
+        },
+        {
+            code: 'import a from "path/to"',
+            parser: 'babel-eslint',
+            options: [{ name: 'path/to/legacy', use: 'New' }],
         }
     ],
     invalid: [
+        {
+            code: 'import a from "root/deprecated/path/to/legacy"',
+            parser: 'babel-eslint',
+            options: ['root/deprecated'],
+            errors: [{
+                message: 'Module root/deprecated is deprecated.'
+            }]
+        },
         {
             code: 'import a from "Legacy"',
             parser: 'babel-eslint',
@@ -41,23 +64,7 @@ ruleTester.run('import', rule, {
             }]
         },
         {
-            code: 'import a from "Legacy"',
-            parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }],
-            errors: [{
-                message: 'Module path/to/Legacy is deprecated. Use New instead.'
-            }]
-        },
-        {
             code: 'import a from "path/to/Legacy"',
-            parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }],
-            errors: [{
-                message: 'Module path/to/Legacy is deprecated. Use New instead.'
-            }]
-        },
-        {
-            code: 'import a from "../../Legacy"',
             parser: 'babel-eslint',
             options: [{ name: 'path/to/Legacy', use: 'New' }],
             errors: [{
