@@ -10,32 +10,32 @@ ruleTester.run('import', rule, {
         {
             code: 'import a from "Module"',
             parser: 'babel-eslint',
-            options: ['Legacy']
+            options: ['Legacy'],
         },
         {
             code: 'const a = require("Module")',
             parser: 'babel-eslint',
-            options: ['Legacy']
+            options: ['Legacy'],
         },
         {
             code: 'const a = require("Module")',
             parser: 'babel-eslint',
-            options: ['path/to/Legacy']
+            options: ['path/to/Legacy'],
         },
         {
             code: 'import a from "../../Legacy"',
             parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }]
+            options: [{ name: 'path/to/Legacy', use: 'New' }],
         },
         {
             code: 'import a from "Legacy"',
             parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }]
+            options: [{ name: 'path/to/Legacy', use: 'New' }],
         },
         {
             code: 'import a from "path/to"',
             parser: 'babel-eslint',
-            options: [{ name: 'path/to/legacy', use: 'New' }]
+            options: [{ name: 'path/to/legacy', use: 'New' }],
         }
     ],
     invalid: [
