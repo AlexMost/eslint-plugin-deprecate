@@ -1,6 +1,6 @@
 {
-  "name": "eslint-plugin-deprecate",
-  "version": "0.5.4",
+  "name": "@bel0v/eslint-plugin-deprecate",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
