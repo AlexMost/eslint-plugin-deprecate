@@ -13,7 +13,8 @@ Let's consider we have this configuration in `.eslintrc`:
   "plugins": ["deprecate"],
   "rules": {
     "deprecate/import": ["error",
-      {"name": "path/to/legacyModule", "use": "newModule"}
+      {"name": "path/to/legacyModule", "use": "newModule"},
+      {"nameRegExp": "\\.sss", "use": "css imports"},
     ]
   }
 }
@@ -25,9 +26,12 @@ Let's consider we have this configuration in `.eslintrc`:
 import a from 'path/to/legacyModule'
 import a from '../../path/to/legacyModule'
 import a from 'legacyModule'
+
 const a = require('path/to/legacyModule');
 const a = require('../../path/to/legacyModule');
 const a = require('legacyModule');
+
+import style from 'style.sss'
 ```
 
 ## Options
@@ -43,6 +47,13 @@ you can pass objects instead of just modules names:
 ```js
 "deprecate/import": [ 2, 
     {"name": "<import name>", "use": "<suggested alternative>"}, ... ]
+```
+
+or use `nameRegExp`:
+
+```js
+"deprecate/import": [ 2, 
+    {"nameRegExp": "<import name>", "use": "<suggested alternative>"}, ... ]
 ```
 
 ## When Not To Use It

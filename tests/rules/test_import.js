@@ -33,6 +33,14 @@ ruleTester.run('import', rule, {
             }]
         },
         {
+            code: 'import a from "test.sss"',
+            parser: 'babel-eslint',
+            options: [{ nameRegExp: '.sss$', use: '.css imports' }],
+            errors: [{
+                message: 'Import pattern \'.sss$\' is deprecated. Use .css imports instead.'
+            }]
+        },
+        {
             code: 'import a from "Legacy"',
             parser: 'babel-eslint',
             options: [{ name: 'Legacy', use: 'New' }],
