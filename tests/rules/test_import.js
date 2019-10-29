@@ -21,7 +21,12 @@ ruleTester.run('import', rule, {
             code: 'const a = require("Module")',
             parser: 'babel-eslint',
             options: ['path/to/Legacy'],
-        }
+        },
+        {
+            code: `import { UserStatusIcon } from './icon'`,
+            parser: 'babel-eslint',
+            options: [{ name: 'gettext', use: 'ttag' }],
+        },
     ],
     invalid: [
         {
@@ -49,27 +54,19 @@ ruleTester.run('import', rule, {
             }]
         },
         {
-            code: 'import a from "Legacy"',
-            parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }],
-            errors: [{
-                message: 'Module path/to/Legacy is deprecated. Use New instead.'
-            }]
-        },
-        {
             code: 'import a from "path/to/Legacy"',
             parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }],
+            options: [{ nameRegExp: '\\/Legacy', use: 'New' }],
             errors: [{
-                message: 'Module path/to/Legacy is deprecated. Use New instead.'
+                message: 'Import pattern \'\\/Legacy\' is deprecated. Use New instead.'
             }]
         },
         {
             code: 'import a from "../../Legacy"',
             parser: 'babel-eslint',
-            options: [{ name: 'path/to/Legacy', use: 'New' }],
+            options: [{ nameRegExp: '\\/Legacy', use: 'New' }],
             errors: [{
-                message: 'Module path/to/Legacy is deprecated. Use New instead.'
+                message: 'Import pattern \'\\/Legacy\' is deprecated. Use New instead.'
             }]
         },
         {
