@@ -1,6 +1,7 @@
 # eslint-plugin-deprecate
 
 [![NPM version](http://img.shields.io/npm/v/eslint-plugin-deprecate.svg)](https://www.npmjs.com/package/eslint-plugin-deprecate)
+![downloads](https://img.shields.io/npm/dm/eslint-plugin-deprecate.svg)
 
 This plugin helps you to refactor your codebase.
 
