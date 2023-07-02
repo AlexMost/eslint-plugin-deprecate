@@ -27,6 +27,21 @@ ruleTester.run('import', rule, {
             parser: 'babel-eslint',
             options: [{ name: 'gettext', use: 'ttag' }],
         },
+        {
+            code: `import { navigate } from 'utils/navigate'`,
+            parser: 'babel-eslint',
+            options: [{ module: 'gatsby', name: 'navigate', use: 'utils/navigate' }],
+        },
+        {
+            code: 'const redirect = require("gatsby").redirect',
+            parser: 'babel-eslint',
+            options: [{ module: 'gatsby', name: 'navigate', use: 'utils/navigate' }],
+        },
+        {
+            code: 'const { redirect } = require("gatsby")',
+            parser: 'babel-eslint',
+            options: [{ module: 'gatsby', name: 'navigate', use: 'utils/navigate' }],
+        },
     ],
     invalid: [
         {
@@ -81,6 +96,30 @@ ruleTester.run('import', rule, {
             options: [{ name: 'Legacy', use: 'New' }],
             errors: [{
                 message: 'Module Legacy is deprecated. Use New instead.'
+            }]
+        },
+        {
+            code: 'import { navigate, gatsbyImage } from "gatsby"',
+            parser: 'babel-eslint',
+            options: [{ module: 'gatsby', name: 'navigate', use: 'utils/navigate' }],
+            errors: [{
+                message: `navigate from gatsby is deprecated. Use utils/navigate instead.`
+            }]
+        },
+        {
+            code: 'const navigate = require("gatsby").navigate',
+            parser: 'babel-eslint',
+            options: [{ module: 'gatsby', name: 'navigate', use: 'utils/navigate' }],
+            errors: [{
+                message: `navigate from gatsby is deprecated. Use utils/navigate instead.`
+            }]
+        },
+        {
+            code: 'const { navigate, gatsbyImage } = require("gatsby")',
+            parser: 'babel-eslint',
+            options: [{ module: 'gatsby', name: 'navigate', use: 'utils/navigate' }],
+            errors: [{
+                message: `navigate from gatsby is deprecated. Use utils/navigate instead.`
             }]
         },
     ]
