@@ -30,7 +30,7 @@
     "eslint": ">=2.x"
   },
   "devDependencies": {
-    "@evo/eslint-config-uaprom": "^2.0.2",
+    "@evo/eslint-config-uaprom": "^6.0.0",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.1",
@@ -38,8 +38,8 @@
     "babel-register": "^6.23.0",
     "eslint": ">=2.x",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
     "mocha": "3.2.0"
   }
 }
