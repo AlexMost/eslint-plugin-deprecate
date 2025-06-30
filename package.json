@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-deprecate",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
