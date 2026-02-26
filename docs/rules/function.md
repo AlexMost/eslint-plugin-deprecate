@@ -1,25 +1,26 @@
-# Prevents some function usage 
+# Prevents some function usage
 
 ## Rule Details
 
 This rule allows you to forbid some function usage and to suggest some alternative.
-Maybe really handy for large teams while refactoring codebase.
+Useful for large teams while refactoring a codebase.
 
-### Example:
-Let's consider we have this configuration in `.eslintrc`:
+Options are passed as a list after the severity (no nested array). Each item may be a string (deprecated name only) or an object with `name` and optional `use` (suggested alternative).
+
+### Example
+
+`.eslintrc` or flat config:
 
 ```json
 {
   "plugins": ["deprecate"],
   "rules": {
-    "deprecate/function": ["error",
-      {"name": "legacyFunc", "use": "newFunc from this package"}
-    ]
+    "deprecate/function": ["error", { "name": "legacyFunc", "use": "newFunc from this package" }]
   }
 }
 ```
 
-### The following patterns are considered as errors:
+### The following patterns are considered errors
 
 ```js
 // any function call with name legacyFunc
@@ -28,20 +29,26 @@ legacyFunc();
 ```
 
 ## Options
-You can just pass deprecated function names as strings:
 
-```js
-"deprecate/function": [ 2, "<fn name1>", "<fn name2>"]
+Pass deprecated function names as strings (no replacement message):
+
+```json
+"deprecate/function": ["error", "legacyFunc", "otherDeprecatedFn"]
 ```
 
-If you want more control over displayed errors (suggest alternative function e.t.c)
-you can pass objects instead of just function names:
+Or pass objects to suggest an alternative:
 
-```js
-"deprecate/function": [ 2, 
-    {"name": "<fn name>", "use": "<suggested alternative>"}, ... ]
+```json
+"deprecate/function": [
+  "error",
+  { "name": "legacyFunc", "use": "newFunc from this package" },
+  { "name": "oldHelper", "use": "use helper from 'utils/helper'" }
+]
 ```
+
+- **name** (required): The deprecated function name.
+- **use** (optional): Message shown as the suggested alternative.
 
 ## When Not To Use It
 
-When you don't want to forbid some function usage in your codebase.
+When you don't want to forbid specific function usage in your codebase.
