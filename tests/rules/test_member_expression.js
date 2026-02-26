@@ -3,7 +3,7 @@ const RuleTester = require('eslint').RuleTester;
 
 const ruleTester = new RuleTester();
 
-ruleTester.run('function', rule, {
+ruleTester.run('member-expression', rule, {
     valid: [
         'var a = withoutArguments();',
         {

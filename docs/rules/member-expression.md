@@ -1,26 +1,26 @@
-# Prevents some member expressions usage 
+# Prevents some member expression usage
 
 ## Rule Details
 
-This rule allows you to forbid some member expression usage and suggests some alternative.
-The good use case for this rule is for example when some library deprecates some of it's
-api methods and suggest you to use other.
+This rule allows you to forbid some member expression usage and suggest an alternative.
+A typical use case is when a library deprecates API methods and recommends replacements.
 
-### Example:
-Let's consider we have this configuration in `.eslintrc`:
+Options are passed as a list after the severity (no nested array). Each item may be a string (e.g. `"React.createClass"`) or an object with `name` and optional `use` (suggested alternative).
+
+### Example
+
+`.eslintrc` or flat config:
 
 ```json
 {
   "plugins": ["deprecate"],
   "rules": {
-    "deprecate/member-expression": ["error",
-      {"name": "React.createClass", "use": "native es6 classes"}
-    ]
+    "deprecate/member-expression": ["error", { "name": "React.createClass", "use": "native es6 classes" }]
   }
 }
 ```
 
-### The following patterns are considered as errors:
+### The following patterns are considered errors
 
 ```js
 import React from 'react';
@@ -35,21 +35,26 @@ var Component = React.createClass({
 ```
 
 ## Options
-You can just pass deprecated member expression strings as strings:
 
-```js
-"deprecate/member-expression": [ 2, "<member expression str1>", "<member expression str1>"]
+Pass deprecated member expressions as strings (e.g. `"Object.prop"`):
+
+```json
+"deprecate/member-expression": ["error", "React.createClass", "React.PropTypes"]
 ```
 
-If you want more control over displayed errors (suggest alternative module import e.t.c)
-you can pass objects instead of just modules names:
+Or pass objects to suggest an alternative:
 
-```js
-"deprecate/member-expression": [ 2, 
-    {"name": "<member expression str1>", "use": "<suggested alternative>"}, ... ]
+```json
+"deprecate/member-expression": [
+  "error",
+  { "name": "React.createClass", "use": "native es6 classes or create-react-class package" },
+  { "name": "React.PropTypes", "use": "'prop-types' package" }
+]
 ```
-> name key is used for consistency with other deprecate functions
+
+- **name** (required): The deprecated member expression (e.g. `"React.createClass"`).
+- **use** (optional): Message shown as the suggested alternative.
 
 ## When Not To Use It
 
-When you don't want to forbid some member expressions in your code.
+When you don't want to forbid specific member expressions in your code.

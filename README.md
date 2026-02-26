@@ -23,6 +23,10 @@ $ npm install eslint-plugin-deprecate --save-dev
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-deprecate` globally.
 
+## ESLint 9 support
+
+**ESLint 9** and **flat config** (`eslint.config.js`) are supported starting from **version 0.9.0**. If you use ESLint 9 or the new flat config format, install `eslint-plugin-deprecate@0.9.0` or later. For ESLint 8 and legacy `.eslintrc`, any 0.8.x or 0.9.x release is compatible.
+
 ## Usage
 
 Add `deprecate` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
@@ -35,14 +39,50 @@ Add `deprecate` to the plugins section of your `.eslintrc` configuration file. Y
 }
 ```
 
-Then configure the rules you want to use under the rules section.
+Then configure the rules you want to use under the rules section. Pass each deprecated item as an option (no nested array):
 
 ```json
 {
     "rules": {
-        "deprecate/rule-name": 2
+        "deprecate/function": ["error", { "name": "oldFn", "use": "newFn" }],
+        "deprecate/import": ["warn", "Legacy"],
+        "deprecate/member-expression": ["error", "React.createClass"]
     }
 }
+```
+
+With multiple items, list them after the severity:
+
+```json
+{
+    "rules": {
+        "deprecate/function": [
+            "error",
+            { "name": "ungettext", "use": "ngettext from ttag" },
+            { "name": "get_config", "use": "getConfig from 'libconfig'" }
+        ],
+        "deprecate/member-expression": [
+            "error",
+            { "name": "React.createClass", "use": "native es6 classes" },
+            { "name": "React.PropTypes", "use": "'prop-types' package" }
+        ]
+    }
+}
+```
+
+**Flat config (ESLint 9):** With `eslint.config.js`, use:
+
+```js
+import deprecate from 'eslint-plugin-deprecate';
+
+export default [
+  {
+    plugins: { deprecate },
+    rules: {
+      'deprecate/function': ['error', { name: 'oldFn', use: 'newFn' }],
+    },
+  },
+];
 ```
 
 ## Supported Rules
